@@ -1,30 +1,35 @@
 
 
-import pandas as pd
+
+import aranorm as aranorm
+
 import numpy as np
-import re
-import string
-from sklearn.model_selection import train_test_split
-from sklearn.utils import resample
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
-from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score,classification_report
-from sklearn.svm import SVC           # used 
-from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier,VotingClassifier
-from sklearn.neural_network import MLPClassifier 
-from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import MultinomialNB, GaussianNB  # used
-from sklearn.tree import DecisionTreeClassifier            # used
-from sklearn.model_selection import GridSearchCV 
-from sklearn.model_selection import StratifiedShuffleSplit
-from tqdm.notebook import tqdm
-import matplotlib.pyplot as plt
-import sys
+
+
+import pickle
+
+from flask import Flask, flash, request, redirect, url_for
+from werkzeug.utils import secure_filename
+
+app = Flask(__name__)
+
+import numpy as np
+
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
+
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.naive_bayes import MultinomialNB, GaussianNB
+from sklearn.svm import SVC
+
+
+
 
 import pickle
 import aranorm as aranorm
 
-from flask import Flask, flash, request, redirect, url_for
-from werkzeug.utils import secure_filename
+from flask import Flask,request, render_template
+
 
 app = Flask(__name__)
 
@@ -35,7 +40,7 @@ models_folder = models_folder.rstrip('/')
 
 vectorizer = pickle.load(open(f'{models_folder}/vectorizer.pkl', 'rb'))
 mnb = pickle.load(open(f'{models_folder}/mnb.pkl', 'rb'))
-dtc = pickle.load(open(f'{models_folder}/dtc', 'rb'))
+dtc = pickle.load(open(f'{models_folder}/dtc.pkl', 'rb'))
 svm = pickle.load(open(f'{models_folder}/svm.pkl', 'rb'))
 
 
