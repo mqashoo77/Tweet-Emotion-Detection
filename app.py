@@ -1,38 +1,17 @@
-
-
-
-import aranorm as aranorm
-
 import numpy as np
-from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
-
-
 import pickle
-
-from flask import Flask, flash, request, redirect, url_for
-from werkzeug.utils import secure_filename
-
-app = Flask(__name__)
-
-import numpy as np
-
+import aranorm as aranorm
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.naive_bayes import MultinomialNB, GaussianNB
 from sklearn.svm import SVC
 
-
-
-
-import pickle
-import aranorm as aranorm
-
+from flask import Flask, flash, request, redirect, url_for
 from flask import Flask,request, render_template
-
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
-
 
 
 models_folder = './models/'
