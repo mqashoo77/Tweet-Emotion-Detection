@@ -9,9 +9,11 @@ built-in machine learning libraries ,also the model will be trained and tested u
 (natural language processing) category applying Sentiment analysis .
 
 #How to use
+
 1. clone this repo 
 2. download the dependencies in the requirements.txt file. 
 3. run the program with Python 3 Interpreter.
 
 #Demo
+
 ![image](https://user-images.githubusercontent.com/61794720/219867143-708ea6d7-9ca8-4a2d-809f-f651a9a68db5.png)
