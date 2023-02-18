@@ -1,0 +1,143 @@
+<!doctype html>
+<head>
+    <title>Tweet Emotion Detiction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <script>
+    function myFunction()
+    {
+        // clear the output text box from the text
+        output_text_box = document.getElementById('output_text');
+        output_text_box.innerHTML = '';
+
+        var elements = document.getElementsByClassName("formVal");
+        var formData = new FormData();
+
+        for(var i=0; i<elements.length; i++)
+        {
+            formData.append(elements[i].name, elements[i].value);
+        }
+        var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function()
+            {
+                if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                {
+                    response = xmlHttp.responseText;
+                    output_text_box = document.getElementById('output_text');
+                    console.log(response);
+                    output_text_box.innerHTML = response;
+                }
+            }
+            xmlHttp.open("post", "/");
+            xmlHttp.send(formData);
+    }
+    </script>
+</head>
+<body>
+    <h1>Tweet Emotion Detection</h1>
+<form method=post enctype=multipart/form-data>
+
+    <h3>Pleas Enter the tweet here</h3>
+    <div class="tweet-container">
+        <textarea id="input_text"class='formVal' rows="5" cols="50" type="text" name="input_text"></textarea> <br>
+        <input id="input-button"type="submit" value="submit" onclick="myFunction(); return false;">
+    </div>
+    <h3>The Result</h3>
+  <textarea id="output_text" class='formVal' rows="5" cols="50" type="text" name="output_text" ></textarea>
+</form>
+<footer class="footer">
+    <p class="footer-title">
+        Powered by
+    </p>
+    <p class="footer-title"><i class="fa-solid fa-copyright"></i>&nbsp<span>Mohammad Qashoo & Raji Abdullah & Mohammad Shqierat </span></p>
+</footer>
+
+</body>
+
+<style>
+    * {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+        color:#000;
+    }
+    body{
+        margin-top: 100px;
+
+        background-image: url({{ url_for('static', filename='/b1.jpg') }});
+        background-size:     cover;
+        background-repeat:   no-repeat;
+        background-position: center center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+    }
+    h1{
+        padding-bottom: 30px;
+    }
+    .tweet-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    #input_text{
+        text-align: end;
+        align-items: center;
+        font-size: 18px;
+    }
+    #input-button{
+        background-color: #025bbb;
+        border: 10px;
+        color: white;
+        margin: 4px 2px;
+        cursor: pointer;
+        height: 50px;
+        width: 100px;
+    }
+    #output_text{
+        width: 150px;
+        height: 50px;
+        font-size: 20px;
+        text-align: center;
+        align-items: center;
+    }
+    .footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  justify-content: center;
+
+}
+
+.footer-title {
+  font-size: .8em;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  color: black;
+  font-size: 20px;
+}
+
+.footer-title i {
+font-size: 15px;
+padding-top: 10px;
+color: black;
+
+}
+.footer-title span {
+padding-top: 10px;
+font-size: 15px;
+color: black;
+
+}
+
+
+</style>
+
+</html>
